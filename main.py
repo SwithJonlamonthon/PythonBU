@@ -27,7 +27,79 @@ for i in range(1,10):
   value = n+ value
 print(value)
 """
+x = int(input("Insert number here: "))
+y = input("Select mode o/e/b mean odd/even/both: ")
+z = input("Do u want only prime numbers(y/n): ")
+def primenum(pmode,mode,number):
+  if pmode == "n":
+    if mode == "b" and number != 0:
+      value = number % 6
+      if value == 1 or value == 5:
+        print(f"{number} is prime number")
+      elif number == 2 or number == 3:
+        print(f"{number} is prime number")
+      else:
+        print(f"{number} is not prime number")
+      return primenum(pmode,mode,number-1)
+    if mode == "o" and number != 0:
+      value = number % 2
+      if value != 0:
+        print("Please enter ODD number")
+        return
+      if number == 2 :
+        print(f"{number} is prime number")
+        return
+      else:
+        print(f"{number} is not prime number")
+      return primenum(pmode,mode,number-2)
+    if mode == "e" and number >= 0:
+        value = number % 6
+        if number % 2 == 0:
+          print("Please enter EVEN number")
+          return
+        if value == 1 or value == 5:
+          print(f"{number} is prime number")
+        elif number == 3:
+          print(f"{number} is prime number")
+        else:
+          print(f"{number} is not prime number")
+        return primenum(pmode,mode,number-2)
+    else:
+      return
+  else:
+      if mode == "b" and number != 0:
+        value = number % 6
+        if value == 1 or value == 5:
+          print(f"{number} is prime number")
+        elif number == 2 or number == 3:
+          print(f"{number} is prime number")
+        return primenum(pmode,mode,number-1)
+      if mode == "o" and number != 0:
+        value = number % 2
+        if value != 0:
+          print("Please enter ODD number")
+          return
+        if number == 2 :
+          print(f"{number} is prime number")
+          return
+        return primenum(pmode,mode,number-2)
+      if mode == "e" and number >= 0:
+          value = number % 6
+          if number % 2 == 0:
+            print("Please enter EVEN number")
+            return
+          if value == 1 or value == 5:
+            print(f"{number} is prime number")
+          elif number == 3:
+            print(f"{number} is prime number")
+          return primenum(pmode,mode,number-2)
+      else:
+        return
+    
 
+        
+     
+primenum(z,y,x)
 ###Week 2 ####
 #### 1 #####
 """
@@ -98,9 +170,9 @@ arr.append("Status")
 print(arr)
 """
 
-
+"""
 ########## 4 ############
 arr = ["Name ID","Name","Count","Status"],[]
 test = list(arr)
 print(test)
-
+"""
