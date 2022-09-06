@@ -1,4 +1,5 @@
 """
+######diamond#########
 def diamond(n):
   space = (n-1) // 2
   for  i in range(1,n+1,2):
@@ -11,7 +12,7 @@ def diamond(n):
  
 diamond(9)
 """
-
+######LIMIT#########
 """
 def limit(y):
   if y == 0:
@@ -26,6 +27,8 @@ for i in range(1,10):
   n = 1 / i+1
   value = n+ value
 print(value)
+"""
+#####Prime number#########
 """
 x = int(input("Insert number here: "))
 y = input("Select mode o/e/b mean odd/even/both: ")
@@ -100,6 +103,7 @@ def primenum(pmode,mode,number):
         
      
 primenum(z,y,x)
+"""
 ###Week 2 ####
 #### 1 #####
 """
@@ -170,9 +174,62 @@ arr.append("Status")
 print(arr)
 """
 
-"""
+
 ########## 4 ############
-arr = ["Name ID","Name","Count","Status"],[]
+arr = ["Name ID","Name","Count","Status"],[],[],[],[],[]
 test = list(arr)
-print(test)
+
+test.append([])
+test[1].append("value 1")
+test[1].append("Rubber")
+test[1].append(0)
+test[1].append("Out of stock")
+test[2].append("value 2")
+test[2].append("Ruler")
+test[2].append(5)
+test[2].append("In stock")
+test[3].append("value 3")
+test[3].append("Pencil")
+test[3].append(1)
+test[3].append("In stock")
+###print(len(test)) #### length of arr
+###print(test)
+
+
+##############5###################
+test[4].append("value 4")
+test[4].append("Pen")
+test[4].append(10)
+test[4].append("In stock")
+test[5].append("value 5")
+test[5].append("Colour pencil")
+test[5].append(5)
+test[5].append("In stock")
+test[6].append("value 6")
+test[6].append("A4 Paper")
+test[6].append(0)
+test[6].append("Out of stock")
+###print(test)
 """
+for i in range(0,len(test)):
+  if test[i][3] == "In stock":
+    print(test[i])"""
+"""
+for i in range(0,len(test)):
+  if test[i][3] == "Out of stock":
+    print(test[i])"""
+
+for i in range(0,len(test)):
+  if test[i][1] == "Ruler":
+    test [i][2] = test [i][2] - 1
+  if test[i][1] == "Pencil":
+    test [i][2] = test [i][2] - 1
+  if test[i][1] == "Pen":
+    test [i][2] = test [i][2] - 2
+  if test[i][1] == "Colour pencil":
+    test [i][2] = test [i][2] - 1
+  if test[i][2] == 0:
+    test [i][3] = "Out of stock"
+print(test)
+
+
