@@ -28,8 +28,9 @@ for i in range(1,10):
   value = n+ value
 print(value)
 """
-#####Prime number#########
 """
+#####Prime number#########
+
 x = int(input("Insert number here: "))
 y = input("Select mode o/e/b mean odd/even/both: ")
 z = input("Do u want only prime numbers(y/n): ")
@@ -173,8 +174,7 @@ print(arr.index("BKK"))
 arr.append("Status")
 print(arr)
 """
-
-
+"""
 ########## 4 ############
 arr = ["Name ID","Name","Count","Status"],[],[],[],[],[]
 test = list(arr)
@@ -211,13 +211,14 @@ test[6].append(0)
 test[6].append("Out of stock")
 ###print(test)
 """
-for i in range(0,len(test)):
-  if test[i][3] == "In stock":
-    print(test[i])"""
 """
 for i in range(0,len(test)):
+  if test[i][3] == "In stock":
+    print(test[i])
+
+for i in range(0,len(test)):
   if test[i][3] == "Out of stock":
-    print(test[i])"""
+    print(test[i])
 
 for i in range(0,len(test)):
   if test[i][1] == "Ruler":
@@ -231,5 +232,134 @@ for i in range(0,len(test)):
   if test[i][2] == 0:
     test [i][3] = "Out of stock"
 print(test)
+"""
+"""
+####Lab 4########
+class cylin:
+    def cal(height,radius):
+        value = 3.16 *height * radius**2
+        return round(value,2)
+                    
+x = cylin.cal(10,5)
+y = cylin.cal(13,7)
+print("𝑣𝑜𝑙𝑢𝑚𝑒 𝑜𝑓 𝑐𝑦𝑙𝑖𝑛𝑑𝑒𝑟 :",x)
+print("𝑣𝑜𝑙𝑢𝑚𝑒 𝑜𝑓 𝑐𝑦𝑙𝑖𝑛𝑑𝑒𝑟 :",y)
+
+class pyramid:
+    def cal(height,width,length):
+        value =  (height*width*length) / 3
+        return round(value,2)
+
+x = pyramid.cal(17,7,10)
+print("𝑣𝑜𝑙𝑢𝑚𝑒 𝑜𝑓 𝑝𝑦𝑟𝑎𝑚𝑖𝑑 :",x)
 
 
+class li:## For init list
+  def __init__(self,value,next=None):
+    self.value = value 
+    self.next = next
+
+
+    
+"""
+"""
+#########Lab 5############
+class node:
+
+    def __init__(self, value):
+        self.value = value
+        self.next = ""
+        self.back = ""
+
+
+class linlist:
+
+    def __init__(self):
+        self.head = None
+
+    def append(self, val):
+        newdata = node(val)
+        if self.head == None:
+            self.head = newdata
+            self.back = None
+            return
+        laste = self.head
+        while laste.next:
+            laste = laste.next
+        laste.next = newdata
+
+    def display(self):
+        printval = self.head
+        while printval is not None:
+            print(printval.value)
+            printval = printval.next
+
+
+test = linlist()
+test.append(1)
+test.append(2)
+test.append(2)
+test.display()
+"""
+
+
+class graph:
+
+    def __init__(self):
+        self.value = [["-", "A"], ["A", "0"]]
+
+    def show(self):
+        x = len(self.value)
+        # for i in range(x):
+        #   print("\n")
+        #   for j in range(x):
+        #     print(self.value[i][j],"  ",end="")
+        for i in range(x):
+            print(self.value[i])
+
+    def create(self, node):
+        x = len(self.value)
+        for i in range(x):
+            if self.value[i][0] == "-":
+                self.value[i].append(node)
+            elif self.value[i][0] != "":
+                self.value[i].append("0")
+        self.value.append([node])
+        for i in range(x):
+            self.value[-1].append("0")
+
+    def connect(self, fnode, snode):
+        x = len(self.value)
+        indexcol = self.value[0].index(fnode)
+        indexscol = self.value[0].index(snode)
+        for i in range(x):
+            if (self.value[i][0] == snode):
+                self.value[i][indexcol] = "1"
+                break
+
+        for y in range(x):
+            if (self.value[y][0] == fnode):
+                self.value[y][indexscol] = "1"
+                break
+    def disconnect(self, fnode, snode):
+        x = len(self.value)
+        indexcol = self.value[0].index(fnode)
+        indexscol = self.value[0].index(snode)
+        for i in range(x):
+            if (self.value[i][0] == snode):
+                self.value[i][indexcol] = "0"
+                break
+
+        for y in range(x):
+            if (self.value[y][0] == fnode):
+                self.value[y][indexscol] = "0"
+                break
+
+
+
+table = graph()
+table.create("B")
+table.create("D")
+table.connect("A", "B")
+table.disconnect("A", "B")
+table.show()
