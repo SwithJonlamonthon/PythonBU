@@ -302,7 +302,7 @@ test.append(2)
 test.display()
 """
 
-
+###Lab6
 class graph:
 
     def __init__(self):
@@ -357,9 +357,105 @@ class graph:
 
 
 
+
+### EX 1
 table = graph()
 table.create("B")
+table.create("C")
 table.create("D")
 table.connect("A", "B")
-table.disconnect("A", "B")
-table.show()
+table.connect("A", "C")
+table.connect("B", "C")
+table.connect("C", "D")
+##table.show()
+
+###Ex2
+table2 = graph()
+table2.create("B")
+table2.create("C")
+table2.create("D")
+table2.create("E")
+table2.create("F")
+table2.connect("A", "B")
+table2.connect("A", "C")
+table2.connect("A", "F")
+table2.connect("C", "D")
+table2.connect("D", "E")
+table2.connect("E", "F")
+##table2.show()
+
+###Ex3
+table2.disconnect("C","F")
+table2.disconnect("A","B")
+table2.disconnect("C","D")
+###table2.show()
+table2.connect("A", "E")
+table2.connect("B", "C")
+table2.connect("D", "F")
+table2.show()
+
+###Lab7
+
+def bubbleSort(arr):
+
+  n = len(arr)
+
+  for i in range(n):
+    for j in range(0, n - i - 1):
+
+      if arr[j] > arr[j + 1]:
+        arr[j], arr[j + 1] = arr[j + 1], arr[j]
+
+
+
+def selectionSort(array, size):
+     
+    for s in range(size):
+        min_idx = s
+         
+        for i in range(s + 1, size):
+             
+   
+            if array[i] < array[min_idx]:
+                min_idx = i
+ 
+        (array[s], array[min_idx]) = (array[min_idx], array[s])
+
+
+def insertion_sort(list1): 
+   
+        
+        for i in range(1, len(list1)): 
+   
+            a = list1[i] 
+   
+            
+            j = i - 1 
+           
+            while j >= 0 and a < list1[j]: 
+                list1[j + 1] = list1[j] 
+                j -= 1 
+                 
+            list1[j + 1] = a 
+
+arr = [2, 1, 10, 23, 0]
+size = len(arr)
+selectionSort(arr, size)
+print("Selection sort")
+print(arr)
+arr = [ 10, 2, 1, 6 ]
+bubbleSort(arr)
+print("Bubble sort")
+print(arr)
+arr = [ 7, 2, 1, 6 ] 
+insertion_sort(arr)
+print("Insertion sort")
+print(arr)
+
+####For performance it all have same performance because they all
+####have time complexity O(n)
+###For resources management for me i think bubble sort is the best 
+### Because they just swap value in list it is really simple
+
+
+
