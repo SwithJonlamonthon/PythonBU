@@ -233,7 +233,7 @@ for i in range(0,len(test)):
     test [i][3] = "Out of stock"
 print(test)
 """
-"""
+
 ####Lab 4########
 class cylin:
     def cal(height,radius):
@@ -255,13 +255,21 @@ print("𝑣𝑜𝑙𝑢𝑚𝑒 𝑜𝑓 𝑝𝑦𝑟𝑎𝑚𝑖𝑑 :",x)
 
 
 class li:## For init list
-  def __init__(self,value,next=None):
+  def __init__(self,value,next=None,prev=None):
     self.value = value 
     self.next = next
+    self.prev = prev
+  def create(self,data):
+    if self.value == None:
+      self.value = data
+    else:
+      self.next = data
+      self.prev = self.next
+        
 
 
     
-"""
+
 """
 #########Lab 5############
 class node:
@@ -301,7 +309,7 @@ test.append(2)
 test.append(2)
 test.display()
 """
-
+"""
 ###Lab6
 class graph:
 
@@ -394,6 +402,9 @@ table2.connect("B", "C")
 table2.connect("D", "F")
 table2.show()
 
+"""
+
+"""
 ###Lab7
 
 def bubbleSort(arr):
@@ -457,5 +468,5 @@ print(arr)
 ###For resources management for me i think bubble sort is the best 
 ### Because they just swap value in list it is really simple
 
-
+"""
 
