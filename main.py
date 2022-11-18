@@ -28,9 +28,9 @@ for i in range(1,10):
   value = n+ value
 print(value)
 """
-"""
-#####Prime number#########
 
+#####Prime number#########
+"""
 x = int(input("Insert number here: "))
 y = input("Select mode o/e/b mean odd/even/both: ")
 z = input("Do u want only prime numbers(y/n): ")
@@ -38,9 +38,9 @@ def primenum(pmode,mode,number):
   if pmode == "n":
     if mode == "b" and number != 0:
       value = number % 6
-      if value == 1 or value == 5:
-        print(f"{number} is prime number")
-      elif number == 2 or number == 3:
+      if number % 5 == 0 and number != 5:
+        print(f"{number} is not prime number")
+      elif value == 1 or value == 5 or number == 2 or number == 3 :
         print(f"{number} is prime number")
       else:
         print(f"{number} is not prime number")
@@ -61,9 +61,7 @@ def primenum(pmode,mode,number):
         if number % 2 == 0:
           print("Please enter EVEN number")
           return
-        if value == 1 or value == 5:
-          print(f"{number} is prime number")
-        elif number == 3:
+        if value == 1 or value == 5 or number == 3:
           print(f"{number} is prime number")
         else:
           print(f"{number} is not prime number")
@@ -234,6 +232,152 @@ for i in range(0,len(test)):
 print(test)
 """
 
+
+####Lab 3#########
+"""
+class filo:
+
+  def __init__(self, arr):
+    self.arr = arr
+
+  def push(self, value):
+    arr = self.arr
+    arr.append(value)
+
+  def pop(self):
+    arr = self.arr
+    arr.pop()
+
+  def show(self):
+    print(str(self.arr))
+
+### First in
+print("FILO")
+arr = filo([])
+arr.push("a")
+arr.show()
+arr.push("b")
+arr.show()
+arr.push("c")
+arr.show()
+arr.push("d")
+arr.show()
+arr.push("e")
+arr.show()
+arr.push("f")
+arr.show()
+### Last out
+arr.pop()
+arr.show()
+arr.pop()
+arr.show()
+arr.pop()
+arr.show()
+arr.pop()
+arr.show()
+arr.pop()
+arr.show()
+arr.pop()
+arr.show()
+
+class fifo:
+
+  def __init__(self, arr):
+    self.arr = arr
+
+  def push(self, value):
+    arr = self.arr
+    arr.append(value)
+
+  def pop(self):
+    arr = self.arr
+    arr.pop(0)
+
+  def reverse(self):
+    Rarr = []
+    arr = self.arr
+    for i in range(len(arr)):
+      Rarr.append(arr.pop())
+    self.arr = Rarr
+  
+
+  def show(self):
+    print(str(self.arr))
+### First in
+print("FIFO")
+arr = fifo([])
+arr.push("a")
+arr.show()
+arr.push("b")
+arr.show()
+arr.push("c")
+arr.show()
+arr.push("d")
+arr.show()
+arr.push("e")
+arr.show()
+arr.push("f")
+arr.show()
+print("Reverse ")
+arr.reverse()
+arr.show()
+### First out
+
+arr.pop()
+arr.show()
+arr.pop()
+arr.show()
+arr.pop()
+arr.show()
+arr.pop()
+arr.show()
+arr.pop()
+arr.show()
+arr.pop()
+arr.show()
+"""
+"""
+class intopost:
+  def __init__(self,str):
+    self.str = str
+
+  def create(self):
+    output = []
+    stack = []
+    op = set(['+','-','*','/'])
+    Str = self.str 
+    for cha in Str :
+      if cha not in op:
+        if cha == '(':
+          if stack == []:
+            stack.append(cha)
+          else:
+            output.append(stack.pop())
+            stack.append(cha)
+        elif cha == ')':
+          output.append(stack.pop())  
+        else:
+          output.append(cha)
+      else:
+        stack.append(cha)
+     
+    
+    while stack != []:
+        output.append(stack.pop())
+    for i in output:
+      if i == '(':
+        continue
+      print(i,end = '')
+        
+        
+    
+
+      
+test = intopost('A+(B*C)') 
+test.create()
+"""
+
+"""
 ####Lab 4########
 class cylin:
     def cal(height,radius):
@@ -334,9 +478,7 @@ print()
 dll.printdll()
         
 
-
-    
-
+"""
 """
 #########Lab 5############
 class node:
@@ -375,6 +517,148 @@ test.append(1)
 test.append(2)
 test.append(2)
 test.display()
+
+class bst:
+
+  def __init__(self, item):
+    self.left = self.right = None
+    self.var = item
+
+    
+
+
+def add(node, data):
+  if node == None:  ## For create new node when it don't have any child
+    return bst(data)
+  else:  ## for check node condition
+    if node.var == data:
+      return node
+    elif node.var < data:
+      node.right = add(node.right, data)  ##For check next node
+    else:
+      node.left = add(node.left, data)  ##For check next node
+
+  return node  ##For recursive
+
+
+def heighttree(node):
+  root = node  ## for pointer on root
+  htr = 0
+  while (node):  ## for left subtree
+    htr = htr + 1
+    node = node.right
+  #print("Height right side is ",htr)
+  ht = 0
+  node = root  ## For reset Pointer to root
+  while (node):  ## for right subtree
+    ht = ht + 1
+    node = node.left
+  #print("Height left side is ",ht)
+  if htr != ht:
+    print("This tree is unbalanced")
+    if htr > ht :
+      return htr
+    else:
+      return ht
+  else:
+    print("This tree is balanced")
+
+
+def minMax(arr):
+  max = arr[0]
+  min = arr[0]
+  for i in range(len(arr)):
+    if max < arr[i]:
+      max = arr[i]
+    if min > arr[i]:
+      min = arr[i]
+  print("Max value is : ",max)
+  print("Min value is : ",min)
+  
+def search(node,data):
+    if node.var == data:
+        print("IT has")
+    elif node.var != data:
+        if node.var == data:
+            return node
+        elif node.var < data:
+            node.right = search(node.right, data)  ##For check next node
+        else:
+            node.left = search(node.left, data)  ##For check next node
+
+        return node ##For recursive
+    else:
+        print("It doesn't have")
+
+arr = []
+def show (node):
+    if node:
+      arr.append(node.var)
+      show(node.left)
+      show(node.right)
+def deleteDeepest(node,d_node):
+    q = []
+    q.append(node)
+    while(len(q)):
+        temp = q.pop(0)
+        if temp is d_node:
+            temp = None
+            return
+        if temp.right:
+            if temp.right is d_node:
+                temp.right = None
+                return
+            else:
+                q.append(temp.right)
+        if temp.left:
+            if temp.left is d_node:
+                temp.left = None
+                return
+            else:
+                q.append(temp.left)
+
+def delete(node,data):
+  if node == None :
+      return None
+  if node.left == None and node.right == None:
+        if node.var == data :
+            return None
+        else :
+            return node
+  key_node = None
+  q = []
+  q.append(node)
+  temp = None
+  while(len(q)):
+      temp = q.pop(0)
+      if temp.var == data:
+          key_node = temp
+      if temp.left:
+          q.append(temp.left)
+      if temp.right:
+          q.append(temp.right)
+  if key_node :
+      x = temp.var
+      deleteDeepest(node,temp)
+      key_node.var = x
+  
+  return node
+  
+    
+      
+
+
+
+r = bst(50)
+r = add(r, 25)
+r = add(r, 35)
+r = add(r,60)
+r = delete(r,35)
+show(r)
+print(arr)
+minMax(arr)
+
+
 """
 """
 ###Lab6
@@ -470,7 +754,6 @@ table2.connect("D", "F")
 table2.show()
 
 """
-
 """
 ###Lab7
 
@@ -536,4 +819,83 @@ print(arr)
 ### Because they just swap value in list it is really simple
 
 """
+""""
+### Sorting part 2
 
+def mergeSort(arr):
+  if len(arr) > 1:
+    divide = int((len(arr) / 2))
+    left = arr[:divide]
+    right = arr[divide:]
+    
+    mergeSort(left) 
+    mergeSort(right)
+    i = 0
+    j = 0 
+    k = 0
+
+    while i < len(left) and j < len(right):
+      if left[i] < right[j]:
+        arr[k] = left[i]
+        i = i+1
+      else:
+        arr[k] = right[j]
+        j = j+1
+      k = k+1
+    while i < len(left):
+      arr[k] = left[i]
+      i = i+1 
+      k = k+1
+    while j < len(right):
+      arr[k] = right[j]
+      j = j+1
+      k = k+1
+      
+list = [29,10,14,37,14,20,7,16]
+mergeSort(list)
+print(list)
+
+"""
+
+####LAB 8
+
+Value = [7,10,12,14,16,20,29,37]
+
+def lisearch(arr,data):
+  for value in range(len(arr)):
+    if arr[value] == data:
+      print(f"Data is in position : {value+1} ({data})")
+      check = False
+      break
+    else:
+      check = True
+    
+  if check == True:
+    print("You input is nothing")
+    
+    
+lisearch(Value,14)
+
+
+def bisearch(arr,data):
+  left = 0
+  right = len(arr) 
+  if data not in arr:
+    print("You input is nothing")
+    return 
+  while True:
+    median = int((left + (right - 1)) / 2)
+    if arr[median] > data:
+      median = median - 1
+      left = median
+    elif arr[median] < data:
+      median = median + 1
+    elif arr[median] == data:
+      print(f"Data is in position : {median+1} ({data})")
+      break
+    left = median
+  
+
+
+
+bisearch(Value,37)
